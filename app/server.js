@@ -41,4 +41,8 @@ controller.on('user_typing', (bot, message) => {
   bot.reply(message, 'stop typing!');
 });
 
+controller.on('outgoing_webhook', (bot, message) => {
+  bot.replyPublic(message, 'yeah yeah');
+});
+
 console.log('starting bot');
