@@ -1,14 +1,9 @@
 // example bot
 import botkit from 'botkit';
-// this is es6 syntax for importing libraries
-// in older js this would be:
-//var botkit = require('botkit')
 
-// botkit controller
 const controller = botkit.slackbot({
   debug: false,
 });
-
 // initialize slackbot
 const slackbot = controller.spawn({
   token: process.env.SLACK_BOT_TOKEN,
@@ -27,7 +22,7 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 // example hello response
-controller.hears(['hello', 'hi', 'howdy'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
+controller.hears(['hello', 'hi', 'batman'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   bot.api.users.info({ user: message.user }, (err, res) => {
     if (res) {
       bot.reply(message, `Hello, ${res.user.name}!`);
@@ -37,12 +32,20 @@ controller.hears(['hello', 'hi', 'howdy'], ['direct_message', 'direct_mention', 
   });
 });
 
-controller.on('user_typing', (bot, message) => {
-  bot.reply(message, 'stop typing!');
+// reply to a direct mention - @bot hello
+controller.on('direct_mention', (bot, message) => {
+  // reply to _message_ by using the _bot_ object
+  bot.reply(message, 'Botman at your service!!');
+});
+
+// reply to a direct message
+controller.on('direct_message', (bot, message) => {
+  // reply to _message_ by using the _bot_ object
+  bot.reply(message, 'How can botman help you?');
 });
 
 controller.on('outgoing_webhook', (bot, message) => {
-  bot.replyPublic(message, 'yeah yeah');
+  bot.replyPublic(message, 'Botman Begins!');
 });
 
 console.log('starting bot');
