@@ -48,4 +48,16 @@ controller.on('outgoing_webhook', (bot, message) => {
   bot.replyPublic(message, 'Botman Begins!https://uproxx.files.wordpress.com/2013/04/batman5.gif?w=650');
 });
 
+controller.on('slash_command', function(bot, message) {
+    // check message.command
+    // and maybe message.text...
+    // use EITHER replyPrivate or replyPublic...
+    bot.replyPrivate(message, 'This is a private reply to the ' + message.command + ' slash command!');
+
+    // and then continue to use replyPublicDelayed or replyPrivateDelayed
+    //bot.replyPublicDelayed(message, 'This is a public reply to the ' + message.command + ' slash command!');
+
+    //bot.replyPrivateDelayed(message, ':dash:');
+
+});
 console.log('starting bot');
