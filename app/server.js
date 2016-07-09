@@ -41,11 +41,11 @@ controller.on('direct_mention', (bot, message) => {
 // reply to a direct message
 controller.on('direct_message', (bot, message) => {
   // reply to _message_ by using the _bot_ object
-  bot.reply(message, 'How can botman help you?');
+  bot.reply(message, 'How can botman help you? https://uproxx.files.wordpress.com/2013/04/batman5.gif?w=650');
 });
 
 controller.on('outgoing_webhook', (bot, message) => {
-  bot.replyPublic(message, 'Botman Begins!');
+  bot.replyPublic(message, 'Botman Begins!https://uproxx.files.wordpress.com/2013/04/batman5.gif?w=650');
 });
 
 console.log('starting bot');
