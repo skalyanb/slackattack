@@ -57,7 +57,7 @@ controller.on('slash_command', function(bot, message) {
     // and then continue to use replyPublicDelayed or replyPrivateDelayed
     //bot.replyPublicDelayed(message, 'This is a public reply to the ' + message.command + ' slash command!');
 
-    //bot.replyPrivateDelayed(message, ':dash:');
+    bot.replyPrivateDelayed(message, ':dash:');
 
 });
 console.log('starting bot');
